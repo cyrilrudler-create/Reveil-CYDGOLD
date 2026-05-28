@@ -282,7 +282,7 @@ ui_lang.cpp         Translation tables (FR/EN/ES/IT/DE/PT)
 
 The **source code** is released under the [MIT License](LICENSE).
 
-The **3D files** (STL) are sold separately on [Cults3D](#).
+The **3D files** (STL) are sold separately on [Cults3D](https://cults3d.com/fr/mod%C3%A8le-3d/maison/radio-reveil-cyd-gold-boitier-imprime-3d).
 
 ---
 
