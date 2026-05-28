@@ -60,7 +60,7 @@ Everything — firmware, UI, enclosure — was designed from scratch.
   - Adding / removing radio stations
   - Uploading MP3 files and custom logos to SD
   - Remote reboot
-- Up to 10 saved WiFi networks
+- Up to 5 saved WiFi networks
 
 ### Power
 - Deep sleep via slide switch on GPIO 2 (~10µA draw)
@@ -71,16 +71,23 @@ Everything — firmware, UI, enclosure — was designed from scratch.
 
 ## Hardware
 
-| Component | Details |
-|---|---|
-| MCU | ESP32-S3, dual-core LX7 @ 240MHz, 8MB OPI PSRAM, 16MB Flash |
-| Display | ILI9341 320x240 TFT, capacitive touch (FT6336) |
-| Audio codec | ES8311 via I2C + I2S |
-| SD card | SDMMC 4-bit mode |
-| RTC | DS3231 |
-| LED strip | WS2812B x7 |
-| Sleep switch | Slide switch on GPIO 2 |
-| Battery | LiPo with ADC level reading |
+| Component | Details | Reference |
+|---|---|---|
+| Main board | ESP32-S3 with 2.8" 320x240 capacitive touchscreen, ES3C28P dual-core 240MHz, WiFi + BT, ES8311 codec onboard | ESP32-S3 CYD (XiaoZhi AI compatible) |
+| LED strip | WS2812B x7 addressable RGB LEDs | WS2812B strip |
+| Heat inserts | M2.5 brass threaded heat inserts (for 3D printed parts assembly) | M2.5 heat inserts |
+| Screws | M2.5 screws (various lengths) | M2.5 screws |
+| RTC | DS3231 real-time clock module | DS3231 |
+| Speaker | 3W 4Ω round speaker 50mm / 1.97" | Sourcing Map 3W 4Ohm |
+| USB-C panel connector | Panel-mount USB-C female with waterproof cap, 4-wire pigtail, OTG adapter | CESFONJER chassis USB-C |
+| SD card extension | Micro SD/TF card slot with 10cm FPC flat flexible extension cable (male to female) | ChenYang TF FPC kit |
+| Internal USB-C cable | Short 90° angled USB-C to USB-C flat cable, USB 2.0, 65W, 7.5cm, black | Xiwai right-angle USB-C 7.5cm |
+| Battery | 3.7V 2000mAh 103454 LiPo rechargeable with JST connector | EEMB 103454 |
+| Sleep switch | Micro slide switch 3-pin 2-position SS12F44 (3mm) | SS12F44 |
+| Connectors | JST 1.25mm 2-pin and 4-pin wire pairs | JST 1.25mm kit |
+| SD card | Micro SD card 16GB or 32GB (Class 10 recommended) | — |
+
+> The ESP32-S3 CYD board already integrates the **ILI9341 display**, **FT6336 capacitive touch controller**, **ES8311 audio codec** and **amplifier** — no separate modules needed for these.
 
 Pin assignments are in [`config.h`](config.h).
 
@@ -89,26 +96,24 @@ Pin assignments are in [`config.h`](config.h).
 ## 3D Enclosure
 
 Designed in **Fusion 360**, inspired by 1970s vintage radios.
-The source `.f3d` file is included for customization.
 
 ![Enclosure](images/enclosure.jpg)
 
 | File | Description |
 |---|---|
 | `Corps.stl` | Main body |
-| `Face.stl` | Front panel with screen cutout |
-| `Dos.stl` | Back panel |
-| `Cercle.stl` | Speaker grille |
+| `Face.stl` | Front panel with screen cutout and CYD board mount |
+| `Dos.stl` | Back panel — DS3231 mount, slide switch and USB-C port |
+| `Cercle.stl` | Speaker retaining ring |
 | `LED.stl` | LED diffuser (bottom ambient light) |
-| `ESP.stl` | ESP32-S3 board mount |
 | `Lamelles_x5.stl` | Decorative side slats (vintage look) |
 | `Pieds_x4.stl` | Feet |
 
 **Print settings:**
 - Material: PLA (body) + Wood PLA (slats) for the natural look
 - Layer height: 0.2mm
-- Infill: 20% (body) / 100% (slats and feet)
-- Supports: not needed
+- Infill: 20% (body) / 35% (slats and feet) / 45% gyroid (back panel)
+- Supports: required for front panel and body
 
 ---
 
@@ -175,8 +180,8 @@ No Arduino IDE required. Use **ESP Web Flasher** directly in your browser (Chrom
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CYD-GOLD.git
-cd CYD-GOLD
+git clone https://github.com/cyrilrudler-create/Reveil-CYDGOLD.git
+cd Reveil-CYDGOLD
 ```
 
 ### 2. Install libraries
@@ -235,7 +240,7 @@ Open a browser and navigate to `http://<device_ip>/` (login: `admin` / `cydgold`
 
 All settings are saved automatically to LittleFS `/config.bin`:
 
-- WiFi credentials (up to 10 networks)
+- WiFi credentials (up to 5 networks)
 - Alarm time, mode, station
 - Volume, equalizer
 - LED color and brightness
@@ -277,7 +282,7 @@ ui_lang.cpp         Translation tables (FR/EN/ES/IT/DE/PT)
 
 The **source code** is released under the [MIT License](LICENSE).
 
-The **3D files** (STL / F3D) are sold separately on [Cults3D](#).
+The **3D files** (STL) are sold separately on [Cults3D](#).
 
 ---
 
@@ -286,3 +291,4 @@ The **3D files** (STL / F3D) are sold separately on [Cults3D](#).
 Made with passion by **CyrilTech** — 2026
 
 *If you build one, share a photo!*
+
