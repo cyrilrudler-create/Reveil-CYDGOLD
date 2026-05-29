@@ -157,7 +157,7 @@ Designed in **Fusion 360**, inspired by 1970s vintage radios.
 
 No Arduino IDE required. Use **ESP Web Flasher** directly in your browser (Chrome / Edge only).
 
-1. Download the latest release from the [Releases](../../releases) page
+1. Download the latest release from the [Releases](../releases) page
 2. Extract the zip — it contains 4 files:
 
 | File | Flash address |
