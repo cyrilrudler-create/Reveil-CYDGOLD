@@ -288,7 +288,7 @@ The **3D files** (STL) are sold separately on [Cults3D](https://cults3d.com/fr/m
 
 ## Author
 
-Made with passion by **CyrilTech** — 2026
+Made with passion by **C-R Tech** — 2026
 
 *If you build one, share a photo!*
 
